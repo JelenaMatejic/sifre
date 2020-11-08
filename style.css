@@ -89,3 +89,20 @@ input[type="submit"] {
     width: 20px;
   }
 }
+
+@media only screen and (max-width: 350px) {
+  body {
+    font-size: 150%;
+  }
+
+  input {
+    font-size: 10px;
+    border: 2px solid #ffc809;
+  }
+
+  input[type="text"] {
+    text-transform: uppercase;
+    height: 15px;
+    width: 15px;
+  }
+}
