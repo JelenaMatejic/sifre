@@ -40,6 +40,10 @@ const langmap = {
     "Č": "Ч",
     "DŽ":"Џ",
     "Š": "Ш",
+    "Y" : "?",
+    "X" : "?",
+    "W" : "?",
+    "Q" : "?",
 
     "А": "А",
     "Б": "Б",
@@ -74,6 +78,7 @@ const langmap = {
 }
 
 submit.addEventListener('click', e => {
+    e.preventDefault();
     let word = letter1.value + letter2.value + letter3.value + letter4.value + letter5.value + letter6.value + letter7.value;
 
     word = word.toUpperCase();
@@ -100,7 +105,10 @@ letters.forEach(el =>
         if (e.target.value) {
             let letter = e.target.value;
             letter = letter.toUpperCase();
-            e.target.value = langmap[letter];
+
+            if(letter.match(/[a-z]/i)){
+                e.target.value = langmap[letter];
+            }
             
             if(e.target.id != "letter7"){
                 el.nextElementSibling.focus();
