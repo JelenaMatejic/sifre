@@ -112,15 +112,20 @@ letters.forEach(el =>
 
             if(letter.match(/([A-ZČĆĐŽŠЧЋЖШЂЉЊ])/i)){
                 e.target.value = langmap[letter];
+                // Nakon unosa slova, pomeriti se na polje desno
                 if(e.target.id != "letter7"){
                     el.nextElementSibling.focus();
                 }    
             }
-            //Uklik na unosu nije neko slovo, ne unositi ništa
+            else if(letter.match(/([0-9])/i)){
+                if(e.target.id != "letter7"){
+                    el.nextElementSibling.focus();
+                }  
+            }   
+             //Uklik na unosu nije neko slovo ili broj, ne unositi ništa         
             else {
                 e.target.value = "";
-            }           
-                    
+            }             
         }
     }
 )
