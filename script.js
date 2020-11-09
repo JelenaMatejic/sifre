@@ -40,10 +40,10 @@ const langmap = {
     "Č": "Ч",
     "DŽ":"Џ",
     "Š": "Ш",
-    "Y" : "?",
-    "X" : "?",
-    "W" : "?",
-    "Q" : "?",
+    "Y" : "Y",
+    "X" : "X",
+    "W" : "W",
+    "Q" : "Q",
 
     "А": "А",
     "Б": "Б",
@@ -85,7 +85,6 @@ submit.addEventListener('click', e => {
     word.replace(/\s/g, "");
 
     if(word == "ПМФНИРН" ||  word == "PMFNIRN") {
-        console.log("POKLAPA SE");
         swal({
             title: "Честитамо!",
             text: "Успешно сте открили лозинку!",
@@ -102,11 +101,14 @@ submit.addEventListener('click', e => {
 
 letters.forEach(el => 
     el.onkeyup = e => {
-        if (e.target.value) {
+        if(e.keyCode == 8 && e.target.id != "letter1"){
+            el.previousElementSibling.focus();
+        }
+        else if (e.target.value) {
             let letter = e.target.value;
             letter = letter.toUpperCase();
 
-            if(letter.match(/[a-z]/i)){
+            if(letter.match(/([A-ZČĆĐŽŠЧЋЖШЂЉЊ])/i)){
                 e.target.value = langmap[letter];
             }
             
