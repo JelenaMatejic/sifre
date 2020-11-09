@@ -101,20 +101,26 @@ submit.addEventListener('click', e => {
 
 letters.forEach(el => 
     el.onkeyup = e => {
+        // Ukoliko je pritisnut taster za brisanje slova ići polje u levo
         if(e.keyCode == 8 && e.target.id != "letter1"){
             el.previousElementSibling.focus();
         }
-        else if (e.target.value) {
+        //Unos novog karaktera
+        else {
             let letter = e.target.value;
             letter = letter.toUpperCase();
 
             if(letter.match(/([A-ZČĆĐŽŠЧЋЖШЂЉЊ])/i)){
                 e.target.value = langmap[letter];
+                if(e.target.id != "letter7"){
+                    el.nextElementSibling.focus();
+                }    
             }
-            
-            if(e.target.id != "letter7"){
-                el.nextElementSibling.focus();
-            }            
+            //Uklik na unosu nije neko slovo, ne unositi ništa
+            else {
+                e.target.value = "";
+            }           
+                    
         }
     }
 )
